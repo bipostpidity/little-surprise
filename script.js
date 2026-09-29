@@ -1,0 +1,4 @@
+const s=[...document.querySelectorAll('.screen')], d=document.getElementById('dots'), p=document.getElementById('progress');
+s.forEach((x,i)=>{const b=document.createElement('button');b.onclick=()=>x.scrollIntoView({behavior:'smooth'});d.appendChild(b)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){let i=s.indexOf(e.target);[...d.children].forEach((b,j)=>b.classList.toggle('active',i===j));p.textContent=String(i+1).padStart(2,'0')+' / '+String(s.length).padStart(2,'0')}}),{threshold:.55});s.forEach(x=>io.observe(x));
+function go(i){s[i].scrollIntoView({behavior:'smooth'})}
